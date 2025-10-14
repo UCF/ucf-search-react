@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import { SearchQueryContextProvider } from './SearchContextProvider'
 import LocationResults from './components/LocationResults'
+import Spotlight from './components/Spotlight'
 
 const SEARCH_ENGINE_ID = import.meta.env.VITE_SEARCH_ENGINE_ID;
 
@@ -33,6 +34,7 @@ function App() {
               <div className='col-lg-4 mb-5'>
                 <aside>
                   <LocationResults />
+                  <Spotlight />
                 </aside>
               </div>
             </div>
