@@ -5,6 +5,7 @@ import HeaderMenu from './components/HeaderMenu'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import { SearchQueryContextProvider } from './SearchContextProvider'
+import LocationResults from './components/LocationResults'
 
 const SEARCH_ENGINE_ID = import.meta.env.VITE_SEARCH_ENGINE_ID;
 
@@ -22,7 +23,20 @@ function App() {
       <main>
         <SearchQueryContextProvider>
           <SearchBar />
-          <SearchResults />
+          <div className="container results-container mt-3 mb-5">
+            <div className="row">
+              <div className="col-lg-8 mb-5">
+                <article>
+                  <SearchResults />
+                </article>
+              </div>
+              <div className='col-lg-4 mb-5'>
+                <aside>
+                  <LocationResults />
+                </aside>
+              </div>
+            </div>
+          </div>
         </SearchQueryContextProvider>
       </main>
       <Footer />
