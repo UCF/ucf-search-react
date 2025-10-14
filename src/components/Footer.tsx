@@ -46,7 +46,7 @@ function Footer() {
       <ul className="ucf-footer-social">
         {socialMenu && socialMenu.items.map(item => {
           return (
-            <li className="ucf-footer-social-item">
+            <li key={item.id} className="ucf-footer-social-item">
               <a className="ucf-footer-social-link" href={item.url} target={item.target} aria-label={item.title}></a>
             </li>
           );
@@ -55,7 +55,7 @@ function Footer() {
       <ul className="ucf-footer-nav">
         {footerMenu && footerMenu.items.map(item => {
           return (
-            <li className="ucf-footer-nav-item">
+            <li key={item.id} className="ucf-footer-nav-item">
               <a href={item.url} className="ucf-footer-nav-link">{item.title}</a>
             </li>
           );
