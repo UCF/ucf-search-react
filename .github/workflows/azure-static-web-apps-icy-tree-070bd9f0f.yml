@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - test
+      - rc-v1.0.0
       - develop
   pull_request:
     types: [opened, synchronize, reopened, closed]
