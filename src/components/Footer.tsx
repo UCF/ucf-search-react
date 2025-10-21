@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Footer.scss'
-import type Menu from '../typings/Menu';
+import type Menu from '../types/Menu';
 
 const REMOTE_MENU_API_URL = import.meta.env.VITE_BASE_MENU_API_URL;
 const FOOTER_MENU_ID = import.meta.env.VITE_FOOTER_MENU_ID;

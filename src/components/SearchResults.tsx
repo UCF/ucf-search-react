@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import './SearchResults.scss'
-import { SearchQueryContext } from '../SearchContext';
 
 function SearchResults() {
   return (

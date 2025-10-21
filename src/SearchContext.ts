@@ -1,11 +1,14 @@
-import React, { createContext, useContext, useState, type Dispatch, type SetStateAction } from "react";
+import { createContext, useContext, type Dispatch, type SetStateAction } from "react";
 
 export interface SearchQueryContextType {
   searchQuery: string;
   setSearchQuery: Dispatch<SetStateAction<string>>;
 }
 
-export const SearchQueryContext = createContext<SearchQueryContextType|undefined>(undefined);
+export const SearchQueryContext = createContext<SearchQueryContextType>({
+  searchQuery: '',
+  setSearchQuery: () => {}
+});
 
 export const useSearchQueryContext = () => {
   const context = useContext(SearchQueryContext);

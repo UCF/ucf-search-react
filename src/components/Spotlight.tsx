@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Spotlight.scss'
-import type { SpotlightData } from '../typings/SpotlightData';
+import type { SpotlightData } from '../types/SpotlightData';
 
 const MYUCF_API_URL = import.meta.env.VITE_MYUCF_API_URL;
 

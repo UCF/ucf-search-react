@@ -7,7 +7,7 @@ import { SearchQueryContext } from '../SearchContext';
 function SearchBar() {
   
   const [searchParams, setSearchParams] = useSearchParams();
-  const { searchQuery, setSearchQuery } = useContext(SearchQueryContext);
+  const { setSearchQuery } = useContext(SearchQueryContext);
 
   useEffect(() => {
     const query = searchParams.get('q') ?? null;
@@ -16,12 +16,13 @@ function SearchBar() {
 
   window.__gcse = {
     callback: () => {
-      const el = document.getElementById('gsc-i-id1') || null;
-      if (el) {
-        el.addEventListener('keyup', (e: KeyboardEvent<HTMLInputElement>) => {
-          setSearchQuery(e.target.value);
+      const element = document.getElementById('gsc-i-id1') as HTMLInputElement || null;
+      if (element) {
+        element.addEventListener('keyup', () => {
+          console.log(element.value)
+          setSearchQuery(element.value);
           setSearchParams({
-            q: e.target.value
+            q: element.nodeValue!
           });
         });
       }

@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import './LocationResults.scss'
 import { SearchQueryContext } from '../SearchContext';
-import type { LocationResultSet } from '../typings/LocationTypes';
+import type { LocationResultSet } from '../types/LocationTypes';
 
 const MAP_SEARCH_URL = import.meta.env.VITE_MAP_SEARCH_URL;
 
 function LocationResults() {
-  const { searchQuery, setSearchQuery } = useContext(SearchQueryContext);
+  const { searchQuery } = useContext(SearchQueryContext);
   const [locationResults, setLocationResults] = useState<LocationResultSet>();
 
   useEffect( () => {
