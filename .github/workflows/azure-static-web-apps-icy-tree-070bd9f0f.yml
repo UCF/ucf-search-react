@@ -13,6 +13,14 @@ jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
+    env:
+      VITE_BASE_MENU_API_URL: ${{ vars.VITE_BASE_MENU_API_URL }}
+      VITE_HEADER_MENU_ID: ${{ vars.VITE_HEADER_MENU_ID }}
+      VITE_FOOTER_MENU_ID: ${{ vars.VITE_FOOTER_MENU_ID }}
+      VITE_SOCIAL_MENU_ID: ${{ vars.VITE_SOCIAL_MENU_ID }}
+      VITE_SEARCH_ENGINE_ID: ${{ vars.VITE_SEARCH_ENGINE_ID }}
+      VITE_MAP_SEARCH_URL: ${{ vars.VITE_MAP_SEARCH_URL }}
+      VITE_MYUCF_API_URL: ${{ vars.VITE_MYUCF_API_URL }}
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
