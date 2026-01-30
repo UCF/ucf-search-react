@@ -1,6 +1,6 @@
 import './SearchBar.scss'
 
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SearchQueryContext } from '../SearchContext';
 
