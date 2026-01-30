@@ -1,6 +1,6 @@
 import './SearchBar.scss'
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SearchQueryContext } from '../SearchContext';
 
@@ -8,23 +8,59 @@ function SearchBar() {
   
   const [searchParams, setSearchParams] = useSearchParams();
   const { setSearchQuery } = useContext(SearchQueryContext);
+  const debounceTimerRef = useRef<number | null>(null);
+
+  let searchElement: any = null;
 
   useEffect(() => {
     const query = searchParams.get('q') ?? null;
-    if (query) setSearchQuery(query);
+    if (query !== null) setSearchQuery(query);
   }, []);
 
   window.__gcse = {
     callback: () => {
       const element = document.getElementById('gsc-i-id1') as HTMLInputElement || null;
-      if (element) {
-        element.addEventListener('keyup', () => {
-          console.log(element.value)
+      let cseElementApi = null;
+
+      if (!searchElement) {
+        try {
+          cseElementApi = (window as any).google?.search?.cse?.element;
+          if (cseElementApi && typeof cseElementApi.getElement === 'function') {
+            searchElement = cseElementApi.getElement('main-search');
+          }
+          if (searchElement && typeof searchElement.clearAllResults === 'function') {
+            searchElement.clearAllResults();
+            return;
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      const onKeyUp = () => {
+        if (debounceTimerRef.current) {
+          clearTimeout(debounceTimerRef.current);
+        }
+        
+        debounceTimerRef.current = setTimeout(() => {
+          if (element.value.length < 3) {
+            setSearchParams();
+            searchElement.clearAllResults();
+            return;
+          }
+
           setSearchQuery(element.value);
           setSearchParams({
-            q: element.nodeValue!
+            q: element.value !== "" ? element.value : ""
           });
-        });
+
+          searchElement.execute();
+
+        }, 250);
+      };
+
+      if (element) {
+        element.addEventListener('keyup', onKeyUp);
       }
     }
   }
