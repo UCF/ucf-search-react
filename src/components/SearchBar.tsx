@@ -22,15 +22,13 @@ function SearchBar() {
       const element = document.getElementById('gsc-i-id1') as HTMLInputElement || null;
       let cseElementApi = null;
 
+      console.log("Running...");
+
       if (!searchElement) {
         try {
           cseElementApi = (window as any).google?.search?.cse?.element;
           if (cseElementApi && typeof cseElementApi.getElement === 'function') {
             searchElement = cseElementApi.getElement('main-search');
-          }
-          if (searchElement && typeof searchElement.clearAllResults === 'function') {
-            searchElement.clearAllResults();
-            return;
           }
         } catch (e) {
           // ignore
