@@ -42,7 +42,6 @@ function SearchBar() {
           if (element.value.length < 3) {
             setSearchParams();
             searchElement.clearAllResults();
-            return;
           }
 
           setSearchQuery(element.value);

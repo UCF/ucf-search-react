@@ -41,8 +41,8 @@ function LocationResults() {
     <div className='location-results'>
       {typeof locationResults !== 'undefined' ? (
         <div className="results">
-          <h2>Locations</h2>
           {locationResults.results.locations.length > 0 && locationResults.results.locations.map((loc) => {
+            <h2>Locations</h2>
             return (
               <div className='sidebar-result'>
                 <h3>{loc.name}</h3>
