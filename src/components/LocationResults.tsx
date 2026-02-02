@@ -46,7 +46,7 @@ function LocationResults() {
         <div className="results">
           {locationResults.results.locations.length > 0 && locationResults.results.locations.map((loc) => {
             return (
-              <>
+              <div key={loc.name}>
                 <h2 className='location-result-heading'>
                   <FontAwesomeIcon icon={byPrefixAndName.fas['map-location-dot']} className='fa-fw' /> Locations
                 </h2>
@@ -63,7 +63,7 @@ function LocationResults() {
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             )
           })}
         </div>

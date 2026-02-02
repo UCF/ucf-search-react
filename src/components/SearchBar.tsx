@@ -39,15 +39,16 @@ function SearchBar() {
         }
         
         debounceTimerRef.current = setTimeout(() => {
-          if (element.value.length < 3) {
-            setSearchParams();
+          if (element.value === "") {
             searchElement.clearAllResults();
+            setSearchParams({});
+          } else {
+            setSearchParams({
+              q: element.value
+            });
           }
 
           setSearchQuery(element.value);
-          setSearchParams({
-            q: element.value !== "" ? element.value : ""
-          });
 
           searchElement.execute();
 
