@@ -24,6 +24,7 @@ jobs:
       VITE_SEARCH_ENGINE_ID: ${{ vars.VITE_SEARCH_ENGINE_ID }}
       VITE_MAP_SEARCH_URL: ${{ vars.VITE_MAP_SEARCH_URL }}
       VITE_MYUCF_API_URL: ${{ vars.VITE_MYUCF_API_URL }}
+      FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
