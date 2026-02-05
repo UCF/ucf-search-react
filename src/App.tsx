@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = `https://cse.google.com/cse.js?cx=${SEARCH_ENGINE_ID}`;
-    script.async = true;
+    script.defer = true;
     document.body.appendChild(script);
   }, []);
 
