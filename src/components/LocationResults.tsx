@@ -42,7 +42,7 @@ function LocationResults() {
 
   return (
     <div className='location-results'>
-      {typeof locationResults !== 'undefined' ? (
+      {typeof locationResults !== 'undefined' && (
         <div className="results">
           {locationResults.results.locations.length > 0 && locationResults.results.locations.map((loc) => {
             return (
@@ -67,7 +67,7 @@ function LocationResults() {
             )
           })}
         </div>
-      ): ( <p>No Results for "{searchQuery}". </p>)}
+      )}
     </div>
   )
 }
