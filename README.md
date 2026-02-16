@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# UCF Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Provides the frontend for [search.ucf.edu](https://search.ucf.edu). This combines an embedded [Google Programmable Search Engine](https://programmablesearchengine.google.com/about/) with location results pulled from the UCF map.
 
-Currently, two official plugins are available:
+## Development Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+There are two primary ways to work on this application. Firstly, a completely local setup using installed tools. The second utilizes the Dev Container extension in Visual Studio code and allows for development with needing to locally install Node, NPM or the node packages for this project. Of the two methods, the Dev Container process ensures the most consistent experience and is the preferred setup.
 
-## React Compiler
+### Dev Containers
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Prerequisites**:
+- Ensure [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation) is installed on your system.
+- Ensure the [Dev container](https://code.visualstudio.com/docs/devcontainers/tutorial#_install-the-extension) Visual Studio Code extension is installed.
+- (Optional) Many Dev Containers will require [Docker compose](https://docs.docker.com/compose/install/) or [Podman compose](https://podman-desktop.io/docs/compose/setting-up-compose) to manage spinning up multiple images at once. This project does not require this, but it may be good to have it installed and configured.
 
-## Expanding the ESLint configuration
+1. Clone the project into a local directory: `git clone git@github.com:UCF/ucf-search-react.git`
+2. Open the project in Visual Studio Code, but ignore prompts to install the node packages or open the project within the container.
+3. Copy the `.env.template` file to `.env` and add in the appropriate values.
+4. This project uses a Font-Awesome kit and will require an authorization token. To pass this into the container, copy the `.devcontainer/devcontainer.env.templ` to `.devcontainer/devcontainer.env` and replace the example token with a valid token.
+5. Open the project in the container by pressing `CMD/Ctrl + Shift + P` and searching for the command `Dev Containers: Rebuild and Reopen in container`.
+6. Once the project is open in the container, follow the instructions below for continued development.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Local Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the project into a local directory: `git clone git@github.com:UCF/ucf-search-react.git`
+2. Open the project in Visual Studio Code, but ignore prompts to install the node packages or open the project within the container.
+3. Copy the `.env.template` file to `.env` and add in the appropriate values.
+4. This project uses a Font-Awesome kit and will require an authorization token. There are a number of ways to define this token, but the simplest is to add it to your shell as an environment variable at startup. Edit your shell configuration file (`.bashrc` or `.zshrc`) and add the following line: `FONTAWESOME_NPM_AUTH_TOKEN=YOUR_AUTH_TOKEN`.
+5. Install the node packages using `npm install`.
+6. The project is now ready to build and run. Follow the instructions below for continue development.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Running the Project
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+There are two primary scripts used for development: The `dev` script and the `build` script.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+To develop locally, run `npm run dev` and a local web server will spin up allowing you to run the application without need of a locallly installed web server (IIS, Apache etc.). Once this process starts, it will continue to run, recompiling your code whenever it detects a file change.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To compile the assets completely, you can run `npm run build`. This will build the project for production use, and place the files within the `dist/` directory. For most development needs, this step is not necessary. When code in this repository is commited to the `main` branch is will build and deploy the code via a GitHub action.
