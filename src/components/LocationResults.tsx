@@ -51,10 +51,10 @@ function LocationResults() {
                   <h3 className='location-heading'>{loc.name}</h3>
                   <div className='media pt-1'>
                     <div className='media-body'>
-                      <a className='mb-2 d-block' href={loc.profile_link} target="_blank">
+                      <a className='mb-2 d-block' href={loc.profile_link} target="_blank" rel="noopener noreferrer">
                         <i className='fa-solid fa-circle-info fa-fw mr-1' aria-hidden="true"></i> More Information
                       </a>
-                      <a className='mb-2 d-block' href={`https://www.google.com/maps/dir/Current+Location/${loc.googlemap_point}`} target='_blank'>
+                      <a className='mb-2 d-block' href={`https://www.google.com/maps/dir/Current+Location/${loc.googlemap_point}`} target='_blank' rel="noopener noreferrer">
                         <i className='fa-solid fa-location-arrow fa-fw mr-1' aria-hidden="true"></i> Directions
                       </a>
                     </div>
