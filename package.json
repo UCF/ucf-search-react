@@ -1,7 +1,7 @@
 {
   "name": "ucf-search",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.2",
   "type": "module",
   "engines": {
     "npm": ">10.0.0",
@@ -14,8 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@awesome.me/kit-850d323291": "^1.0.4",
-    "@fortawesome/react-fontawesome": "^3.1.1",
+
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.4",
