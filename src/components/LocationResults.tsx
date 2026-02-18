@@ -3,9 +3,6 @@ import './LocationResults.scss'
 import { SearchQueryContext } from '../SearchContext';
 import type { LocationResultSet } from '../types/LocationTypes';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { byPrefixAndName } from '@awesome.me/kit-850d323291/icons';
-
 const MAP_SEARCH_URL = import.meta.env.VITE_MAP_SEARCH_URL;
 
 function LocationResults() {
@@ -48,17 +45,17 @@ function LocationResults() {
             return (
               <div key={loc.name}>
                 <h2 className='location-result-heading'>
-                  <FontAwesomeIcon icon={byPrefixAndName.fas['map-location-dot']} className='fa-fw' /> Locations
+                  <i className='fa-solid fa-map-location-dot fa-fw' aria-hidden="true"></i> Locations
                 </h2>
                 <div className='sidebar-result'>
                   <h3 className='location-heading'>{loc.name}</h3>
                   <div className='media pt-1'>
                     <div className='media-body'>
                       <a className='mb-2 d-block' href={loc.profile_link} target="_blank">
-                        <FontAwesomeIcon icon={byPrefixAndName.fas['circle-info']} className='fa-fw mr-1' /> More Information
+                        <i className='fa-solid fa-circle-info fa-fw mr-1' aria-hidden="true"></i> More Information
                       </a>
                       <a className='mb-2 d-block' href={`https://www.google.com/maps/dir/Current+Location/${loc.googlemap_point}`} target='_blank'>
-                        <FontAwesomeIcon icon={byPrefixAndName.fas['location-arrow']} className='fa-fw mr-1' /> Directions
+                        <i className='fa-solid fa-location-arrow fa-fw mr-1' aria-hidden="true"></i> Directions
                       </a>
                     </div>
                   </div>
