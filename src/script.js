@@ -1,3 +1,5 @@
+import './style.css';
+
 const searchInput = document.getElementById("search-input");
 const searchClear = document.getElementById("search-clear");
 const locationsList = document.getElementById("locations-list");
@@ -56,7 +58,7 @@ searchClear.addEventListener("click", () => {
 
 //Fetching header navigation menu from UCF 
 function loadHeader() {
-    fetch(`https://www.ucf.edu/wp-json/ucf-rest-menus/v1/menus/23/`)
+    fetch(`${import.meta.env.VITE_BASE_MENU_API_URL}/menus/${import.meta.env.VITE_HEADER_MENU_ID}/`)
         .then((response) => response.json())
         .then((data) => {
             const menu = document.getElementById("menu");
@@ -75,7 +77,7 @@ function loadHeader() {
 
 //Fetching footer navigation menu
 function loadFooter() {
-    fetch(`https://www.ucf.edu/wp-json/ucf-rest-menus/v1/menus/24/`)
+    fetch(`${import.meta.env.VITE_BASE_MENU_API_URL}/menus/${import.meta.env.VITE_FOOTER_MENU_ID}/`)
         .then((response) => response.json())
         .then((data) => {
             const footerMenu = document.getElementById("ucf-footer-nav");
@@ -102,11 +104,11 @@ function loadFooterSocials() {
     const socialIcons = {
         facebook: `<i class="fa-brands fa-facebook-f"></i>`,
         twitter: `<i class="fa-brands fa-twitter"></i>`,
-        social: `<i class="fa-solid fa-share-nodes">`,
+        social: `<i class="fa-solid fa-share-nodes"></i>`,
         youtube: `<i class="fa-brands fa-youtube"></i>`,
         instagram: `<i class="fa-brands fa-instagram"></i>`,
     };
-    fetch(`https://www.ucf.edu/wp-json/ucf-rest-menus/v1/menus/26/`)
+    fetch(`${import.meta.env.VITE_BASE_MENU_API_URL}/menus/${import.meta.env.VITE_SOCIAL_MENU_ID}/`)
         .then((res) => res.json())
         .then((data) => {
             const footerSocials = document.getElementById("ucf-footer-socials");
@@ -141,7 +143,7 @@ function loadFooterSocials() {
 
 //Fetching Spotlight promotional image
 function loadSpotlight() {
-    fetch(`https://www.ucf.edu/wp-json/myucf-cp/v1/options`)
+    fetch(`${import.meta.env.VITE_MYUCF_API_URL}`)
         .then((response) => response.json())
         .then((data) => {
             //Retrieving all spotlight information and the image
@@ -171,7 +173,7 @@ function search(query) {
 
 //Fetching building data from UCF map API
 function locationResults(query) {
-    fetch(`https://map.ucf.edu/search/.json?q=${query}&extended=true&type=buildings`)
+    fetch(`${import.meta.env.VITE_MAP_SEARCH_URL}?q=${query}&extended=true&type=buildings`)
         .then((res) => res.json())
         .then((data) => {
             const results = data.results.locations;

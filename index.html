@@ -1,18 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UCF Search</title>
-    <script type="text/javascript" id="ucfhb-script" src="//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1"></script>
-    <script src="https://kit.fontawesome.com/850d323291.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js" integrity="sha384-CPFFlrdhp9pDDCqRqdTKNZ5oAHsnfnvHGt0CsRIeL5Gc7V/OkP1Y4w8zTxlV3mat" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.ucf.edu/athena-framework/latest/js/framework.min.js"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>SEARCH UCF</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdn.ucf.edu/athena-framework/v1.3.2/css/framework.min.css" />
+        <script async src="https://cse.google.com/cse.js?cx=%VITE_SEARCH_ENGINE_ID%"></script>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="site-header d-flex flex-column">
+            <nav class="navbar navbar-expand-lg navbar-custom navbar-light py-2 py-lg-4">
+                <div class="container px-0 px-lg-3">
+                    <!--Mobile Navigation Button-->
+                    <button class="navbar-toggler ml-auto mr-0 collapsed" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false">
+                        <span class="navbar-toggler-text">Navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div id="menu" class="collapse navbar-collapse"></div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Search bar -->
+        <div class="search-header-bar">
+            <div class="container">
+                <div class="search-header-row">
+                    <h1 class="search-heading">Search UCF</h1>
+
+                    <div class="search-bar-wrapper">
+                        <div class="search-input-group">
+                            <span class="search-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+
+                            <label for="search-input" class="sr-only">Search UCF</label>
+                            <input type="text" id="search-input" class="search-input" />
+
+                            <button class="search-clear" id="search-clear" style="display: none;" aria-label="Clear search">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main -->
+        <main class="main py-5">
+            <div class="container">
+                <div class="search-page-layout">
+                    <!--Results will populate here-->
+                    <div class="search-main-col">
+                        <div class="results-container" id="results-container" style="display: none;">
+                            <div id="google-search" class="mb-5">
+                                <div class="gcse-searchresults-only" data-gname="main-search"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Sidebar to hold locations and promo image-->
+                    <aside class="search-sidebar">
+                        <section id="map-search" class="mb-4" style="display: none;">
+                            <h2 class="sidebar-section-title">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                Locations
+                            </h2>
+                            <div id="locations-list"></div>
+                        </section>
+
+                        <div id="promo-block"></div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="ucf-footer mt-auto">
+            <a class="ucf-footer-title" href="https://www.ucf.edu/">University of Central Florida</a>
+
+            <div class="container">
+                <div id="ucf-footer-socials" class="d-flex justify-content-center mb-3"></div>
+                <ul id="ucf-footer-nav" class="ucf-footer-nav"></ul>
+            </div>
+
+            <p class="ucf-footer-address">
+                4000 Central Florida Blvd. Orlando, Florida 32816 |
+                <a href="tel:4078232000">407.823.2000</a><br />
+                © <a href="https://www.ucf.edu/">University of Central Florida</a>
+            </p>
+        </footer>
+
+        <script type="module" src="/src/script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js"></script>
+        <script src="https://cdn.ucf.edu/athena-framework/v1.3.2/js/framework.min.js"></script>
+        <script src="//universityheader.ucf.edu/bar/js/university-header.js" id="ucfhb-script" async></script>
+    </body>
 </html>
