@@ -13,11 +13,6 @@
     </head>
 
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js"></script>
-        <script src="https://cdn.ucf.edu/athena-framework/v1.3.2/js/framework.min.js"></script>
-        <script src="//universityheader.ucf.edu/bar/js/university-header.js" id="ucfhb-script" async></script>
-
         <!-- Header -->
         <header class="site-header d-flex flex-column">
             <nav class="navbar navbar-expand-lg navbar-custom navbar-light py-2 py-lg-4">
@@ -45,9 +40,10 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
 
+                            <label for="search-input" class="sr-only">Search UCF</label>
                             <input type="text" id="search-input" class="search-input" />
 
-                            <button class="search-clear" id="search-clear" style="display: none;">
+                            <button class="search-clear" id="search-clear" style="display: none;" aria-label="Clear search">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
@@ -102,5 +98,9 @@
         </footer>
 
         <script src="script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js"></script>
+        <script src="https://cdn.ucf.edu/athena-framework/v1.3.2/js/framework.min.js"></script>
+        <script src="//universityheader.ucf.edu/bar/js/university-header.js" id="ucfhb-script" async></script>
     </body>
 </html>

@@ -19,11 +19,15 @@ searchInput.addEventListener("input", () => {
         resultsContainer.style.display = "block";
 
         // Executing Google Custom Search
+        let retryCount = 0;
         const trySearch = () => {
             if (window.google && window.google.search && window.google.search.cse) {
                 window.google.search.cse.element.getElement("main-search").execute(query);
-            } else {
+            } else if (retryCount < 50){
+                retryCount++;
                 setTimeout(trySearch, 100);
+            } else {
+                console.warn("Google Custom Search Engine timed out");
             }
         };
         trySearch();
@@ -148,8 +152,7 @@ function loadSpotlight() {
             const img = document.createElement("img");
             img.src = "https://www.ucf.edu/" + promo.image;
             img.alt = promo.alt;
-            img.style.maxWidth = "100%";
-            img.style.display = "block";
+            img.classList.add('img-fluid');
             link.appendChild(img);
             container.appendChild(link);
         })
@@ -157,7 +160,7 @@ function loadSpotlight() {
 }
 
 function search(query) {
-    //Fallback for if an empty string is recieved 
+    //Fallback for if an empty string is received 
     if (!query) {
         window.location.href = window.location.pathname;
         return;
